@@ -1,0 +1,22 @@
+
+    <tr>
+        <td>
+            <%= link_to item.name,item%>
+        </td>
+        <td>
+            <% if item.user %>
+                <font size="2" >
+                    <%= link_to item.user.name,item.user  %>
+                </font>
+            <% end %>
+        </td>
+        <td>
+            <%= sc_c_date(item) %>
+        </td>
+        <td>
+            <%= sc_u_date(item) %>
+        </td>
+        <td align="right">
+            <font color="<%= curr_status_color(item) %>"><%=  curr_day_status(item) %> </font>
+        </td>
+    </tr>

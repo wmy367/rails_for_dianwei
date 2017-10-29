@@ -1,0 +1,7 @@
+<%= form_for Comment.new,method: :post do |f| %>
+    <%= f.hidden_field :user_id,value: current_user.id %>
+    <%= f.hidden_field :item_id,value: curr_item.id %>
+    <%= f.label :content,'评论内容' %>
+    <%= f.text_area :content,placeholder:'新评论',class:"comment-block"%><br>
+    <%= f.submit "发布评论",class: "btn btn-large btn-primary" %>
+<% end %>

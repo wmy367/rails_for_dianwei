@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<% if @item.user == current_user %>
+    <%= link_to '编辑', edit_item_path(@item) %> |
+    <%= link_to '物品列表', items_path %>
+<% end %>
+<p></p>
+<li>
+    <% if @item.user %>
+        <strong>记录人：</strong>
+        <%= link_to @item.user.name,@item.user %>
+    <% end %>
+</li>
+<li>
+ <strong>名字:</strong>
+  <%= @item.name %>
+</li>
+<li>
+    <strong>电话:</strong>
+    <%= @item.phone %>
+</li>
+<li>
+  <strong>邮箱:</strong>
+  <%= @item.email %>
+</li>
+<li>
+    <strong>描述</strong>
+    <%= @item.status %>
+</li>
+
+<div class="item-show-yield" >
+<% if @item.info %>
+<%= render html:@item.info.html_safe %>
+<% end %>
+</div>
+
+<% @item.comments.each do |comment| %>
+    <%= render 'comments/comment_avatar',user: curr_comment_user(comment) %>
+    <div class="comment-show">
+        <%= comment.content %>
+    </div>
+<% end %>
+
+<% if signed_in? %>
+    <%= render 'layouts/new_comment',curr_item: @item %>
+<% end %>

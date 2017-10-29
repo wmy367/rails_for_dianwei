@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="item-form">
+        <%= form_for(item,html:{multipart:true}) do |f| %>
+            <%= render 'shared/error_messages',object: f.object %>
+            <%= f.label :name,"名字"  %>
+            <%= f.text_field :name %>
+            <%= f.label :email,"邮箱" %>
+            <%= f.text_field :email %>
+            <%= f.label :phone,'电话号码' %>
+            <%= f.text_field :phone %>
+            <% unless submit_label == "记录新维修物品" %>
+                <%= f.label :status,'修复状态' %>
+                <%= f.select :status,options_for_select([['维修中','维修中'],['已修好','已修好'],['无法修复','无法修复']]) %>
+            <% end %>
+            <%= f.label :info,'详细描述' %>
+            <div class="my-kindeditor" >
+                <%= f.kindeditor :info,simple_mode: true,width: 1024, height: 600 %>
+            </div>
+            <%= f.submit "#{submit_label}",class: "btn btn-large btn-primary" %>
+        <% end %>
+    </div>
+</div>
+
+<%= javascript_include_tag "zload_kindeditor" %>

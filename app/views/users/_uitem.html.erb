@@ -1,0 +1,7 @@
+<li>
+    创建于：<%= sc_c_date(item) %>
+    [ <%=  item.status %>]
+    <%= link_to item.name,item%>
+    <%= link_to "更改资料",edit_item_path(item)%>
+    <%= link_to "删除",item,method: :delete,data: {confirm: "是否确定"}  %>
+</li>

@@ -1,0 +1,10 @@
+<% provide(:sub_title,'所有成员 ')  %>
+
+<!-- <h1>所有电子维修基地成员名录</h1> -->
+<h1>成员名录</h1>
+<%= will_paginate @users %>
+<ul class="users" >
+    <%= render @users %>
+</ul>
+
+<%= will_paginate @users %>

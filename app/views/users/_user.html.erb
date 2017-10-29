@@ -1,0 +1,11 @@
+<li>
+    <%= image_tag user.avatar.url(:thumb),alt:"-_-!",class:'gravatar',size: "20x20" %>
+    <%= link_to user.name,user%>
+    <%  if user == current_user || curr_admin? %>
+        <%= link_to "更新头像",crop_user_path(user)%>
+        <%= link_to "更改资料",edit_user_path(user)%>
+        <% if curr_admin? %>
+            <%= link_to "删除",user,method: :delete,data: {confirm: "是否确定"}  %>
+        <% end %>
+    <% end %>
+</li>

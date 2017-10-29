@@ -1,0 +1,26 @@
+<% provide(:sub_title,'所有维修物品')  %>
+
+<h1>所有维修物品</h1>
+<%= will_paginate @items %>
+
+<div class="items-table">
+    <table border="0">
+        <col width="100" />
+        <col width="100" />
+        <col width="200" />
+        <col width="200" />
+        <col width="200" />
+        <tr>
+            <th align="left">物品名称</th>
+            <th align="left">提交者</th>
+            <th align="left">提交时间</th>
+            <th align="left">最新跟进时间</th>
+            <th align="right">维修状况</th>
+        </tr>
+        <% @items.each do |i| %>
+            <%= render 'item_tabel',item: i  %>
+        <% end %>
+    </table>
+</div>
+
+<%= will_paginate @items %>

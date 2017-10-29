@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="span6 offset3">
+        <%= form_for(@user,html:{multipart:true}) do |f| %>
+            <%= render 'shared/error_messages',object: f.object %>
+            <%= f.label :name,"名字" %>
+            <%= f.text_field :name %>
+            <%= f.label :email,"邮箱" %>
+            <%= f.text_field :email %>
+            <%= f.label :school_serial,"学号" %>
+            <%= f.text_field :school_serial %>
+            <%= f.label :curr_localtion,'当前所在地' %>
+            <%= f.text_field :curr_localtion %>
+            <%= f.label :phone,'电话号码' %>
+            <%= f.text_field :phone %>
+            <%= f.label :gender,'性别' %>
+            <%= f.select :gender,options_for_select([['男',1],['女',2]]) %>
+            <%= f.label :password,'密码' %>
+            <%= f.password_field :password %>
+            <%= f.label :password_confirmation,'密码确认' %>
+            <%= f.password_field :password_confirmation %>
+            <%= f.submit "#{submit_label}",class: "btn btn-large btn-primary" %>
+        <% end %>
+    </div>
+</div>

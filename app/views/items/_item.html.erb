@@ -1,0 +1,15 @@
+<li class="items-index-list">
+    <% if item.user %>
+        <font size="3" >
+            <%= link_to item.user.name,item.user  %>
+        </font>
+    <% end %>
+    创于：<%= sc_c_date(item) %>
+    最后一次更新：<%= sc_u_date(item) %>
+    [ <font color="#F00"><%=  curr_day_status(item) %> </font>]
+    <%= link_to item.name,item%>
+    <% if item.user == current_user %>
+        <%= link_to "更改资料",edit_item_path(item)%>
+        <%= link_to "删除",item,method: :delete,data: {confirm: "是否确定"}  %>
+    <% end %>
+</li>

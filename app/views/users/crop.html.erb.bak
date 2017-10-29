@@ -1,0 +1,45 @@
+<h1>剪切头像</h1>
+
+<!-- This wraps the whole cropper -->
+<div id="image-cropper">
+    <% if @user.avatar.url() %>
+      <!-- This is where the preview image is displayed -->
+      <div class="cropit-preview"><%= image_tag @user.avatar.url() %></div>
+    <% end %>
+    <!-- This range input controls zoom -->
+    <!-- You can add additional elements here, e.g. the image icons -->
+    <!-- <input type="range" class="cropit-image-zoom-input" /> -->
+
+    <!-- This is where user selects new image -->
+    <!-- <input type="file" class="cropit-image-input" /> -->
+
+    <!-- The cropit- classes above are needed
+       so cropit can identify these elements -->
+
+    <%= form_for @user,html:{multipart:true} do |f| %>
+    <input type="range" class="cropit-image-zoom-input" />
+    <%= f.file_field :avatar,class:"cropit-image-input"%>
+    <%= f.submit %>
+    <% end %>
+</div>
+
+<div>
+    <% if @user.avatar.url() %>
+        <%= image_tag @user.avatar.url() %>
+    <% end %>
+</div>
+
+
+<script>
+$('#image-cropper').cropit();
+
+// In the demos I'm passing in an imageState option
+// so it renders an image by default:
+// $('#image-cropper').cropit({ imageState: { src: { imageSrc } } });
+
+// Exporting cropped image
+$('.download-btn').click(function() {
+  var imageData = $('#image-cropper').cropit('export');
+  window.open(imageData);
+});
+</script>

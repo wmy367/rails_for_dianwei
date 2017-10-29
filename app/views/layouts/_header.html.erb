@@ -1,0 +1,40 @@
+<!-- <header class="header-hnu">
+    <div class="header-top">
+        <div class="logo">
+            <img src="images/logo.png" alt="湖南大学" title="湖南大学" width="202" height="63" border="0">
+        </div>
+        <div class="main-menu">
+            <ul class="main-menu-list">
+                <li class="main-level">第一</li>
+                <li class="main-level">第二</li>
+            </ul>
+        </div>
+    </div>
+</header> -->
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner" >
+        <div class="container">
+            <!-- <%= link_to "电子义务维修基地", root_path, id: "logo" %> -->
+            <% if curr_admin? %>
+                <%= link_to "当前是管理员登录", root_path, id: "logo" %>
+            <% else %>
+                <%= link_to "电子义务维修基地", root_path, id: "logo" %>
+            <% end %>
+            <nav>
+                <ul class="nav pull-right">
+                    <li><%= link_to "主页",root_path%></li>
+                    <li><%= link_to "所有成员",users_path %></li>
+                    <li><%= link_to "所有维修物品",items_path %></li>
+                    <% if signed_in? %>
+                        <li><%= link_to "个人资料",current_user %></li>
+                        <li><%= link_to "记录新的维修物品",new_item_path %></li>
+                        <li><%= link_to "退出",signout_path,method: :delete,data:{confirm: "是否需要退出?"} %></li>
+                    <% else %>
+                        <li><%= link_to "登录",signin_path %></li>
+                    <% end %>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

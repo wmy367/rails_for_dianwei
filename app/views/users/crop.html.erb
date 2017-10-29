@@ -1,0 +1,12 @@
+<h1>剪切头像</h1>
+<div>
+    <% if @user.avatar.url() %>
+        <%= image_tag @user.avatar.url() %>
+    <% end %>
+</div>
+
+<%= form_for @user,url: crop_user_path(@user),html:{multipart:true,class: 'crop_vavatar',id: "crop_user_#{@user.id}"} do |f| %>
+<%= render 'shared/error_messages',object: @user %>
+<%= f.file_field :avatar %>
+<%= f.submit %>
+<% end %>

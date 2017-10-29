@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<p>
+    <% if @user.avatar.url(:thumb) %>
+        <strong>头像</strong>
+        <%= image_tag @user.avatar.url(:thumb),size:"50x50" %>
+    <% end %>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+    <strong>学号:</strong>
+    <%= @user.school_serial %>
+</p>
+
+<% if @user == current_user %>
+    <%= link_to '修改个人资料', edit_user_path(@user) %> |
+<% end %>
+<%= link_to '返回所有成员列表', users_path %>
+
+<%= will_paginate @uitems %>
+<ol class="user-items" >
+    <% @uitems.each do |item| %>
+        <li>
+            创于：<%= sc_c_date(item) %>
+            最后一次更新：<%= sc_u_date(item) %>
+            [ <%=  curr_day_status(item) %>]
+            <%= link_to item.name,item%>
+            <% if item.user == current_user || curr_admin?  %>
+                <%= link_to "更改资料",edit_item_path(item)%>
+                <% if curr_admin? %>
+                    <%= link_to "删除",item,method: :delete,data: {confirm: "是否确定"}  %>
+                <% end %>
+            <% end %>
+        </li>
+    <% end %>
+</ol>
+<%= will_paginate @uitems %>
