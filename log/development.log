@@ -19557,3 +19557,327 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 76ms (Views: 64.0ms | ActiveRecord: 1.8ms)
 
 
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::RawUpload" => Rack::RawUpload
+
+ (called from <top (required)> at /home/young/work/rails/rails_for_dianwei/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_remember_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_remember_token' AND type='index'
+[0m
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::RawUpload" => Rack::RawUpload
+
+ (called from <top (required)> at /home/young/work/rails/rails_for_dianwei/config/environment.rb:5)
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20171006022401)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "avatar" varchar, "school_serial" varchar, "phone" varchar, "curr_localtion" varchar, "gender" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171006022401"]]
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddPasswordDigestToUsers (20171006040615)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171006040615"]]
+  [1m[35m (10.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddRememberTokenToUsers (20171008015932)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_token" varchar[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171008015932"]]
+  [1m[35m (10.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateItems (20171015053424)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "info" text, "phone" varchar, "email" varchar, "status" integer, "tag" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171015053424"]]
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRichRichImages (20171015124124)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateRichRichImages < ActiveRecord::Migration[4.2] (called from load at /home/young/.rvm/gems/ruby-2.3.0/bin/rake:23)
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "rich_rich_images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "owner_type" varchar, "owner_id" integer)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171015124124"]]
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUriCacheToRichImage (20171015124125)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddUriCacheToRichImage < ActiveRecord::Migration[4.2] (called from load at /home/young/.rvm/gems/ruby-2.3.0/bin/rake:23)
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "rich_rich_images" ADD "uri_cache" text[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171015124125"]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RefactorImageToFile (20171015124126)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class RefactorImageToFile < ActiveRecord::Migration[4.2] (called from load at /home/young/.rvm/gems/ruby-2.3.0/bin/rake:23)
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "rich_rich_images" RENAME TO "rich_rich_files"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arich_rich_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "rich_file_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "owner_type" varchar, "owner_id" integer, "uri_cache" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arich_rich_files" ("id","created_at","updated_at","rich_file_file_name","image_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache")
+                     SELECT "id","created_at","updated_at","image_file_name","image_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache" FROM "rich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "rich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "rich_rich_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "rich_file_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "owner_type" varchar, "owner_id" integer, "uri_cache" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "rich_rich_files" ("id","created_at","updated_at","rich_file_file_name","image_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache")
+                     SELECT "id","created_at","updated_at","rich_file_file_name","image_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache" FROM "arich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arich_rich_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "rich_file_file_name" varchar, "rich_file_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "owner_type" varchar, "owner_id" integer, "uri_cache" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arich_rich_files" ("id","created_at","updated_at","rich_file_file_name","rich_file_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache")
+                     SELECT "id","created_at","updated_at","rich_file_file_name","image_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache" FROM "rich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "rich_rich_files"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "rich_rich_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "rich_file_file_name" varchar, "rich_file_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "owner_type" varchar, "owner_id" integer, "uri_cache" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "rich_rich_files" ("id","created_at","updated_at","rich_file_file_name","rich_file_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache")
+                     SELECT "id","created_at","updated_at","rich_file_file_name","rich_file_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache" FROM "arich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arich_rich_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "rich_file_file_name" varchar, "rich_file_content_type" varchar, "rich_file_file_size" integer, "image_updated_at" datetime, "owner_type" varchar, "owner_id" integer, "uri_cache" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arich_rich_files" ("id","created_at","updated_at","rich_file_file_name","rich_file_content_type","rich_file_file_size","image_updated_at","owner_type","owner_id","uri_cache")
+                     SELECT "id","created_at","updated_at","rich_file_file_name","rich_file_content_type","image_file_size","image_updated_at","owner_type","owner_id","uri_cache" FROM "rich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "rich_rich_files"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "rich_rich_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "rich_file_file_name" varchar, "rich_file_content_type" varchar, "rich_file_file_size" integer, "image_updated_at" datetime, "owner_type" varchar, "owner_id" integer, "uri_cache" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "rich_rich_files" ("id","created_at","updated_at","rich_file_file_name","rich_file_content_type","rich_file_file_size","image_updated_at","owner_type","owner_id","uri_cache")
+                     SELECT "id","created_at","updated_at","rich_file_file_name","rich_file_content_type","rich_file_file_size","image_updated_at","owner_type","owner_id","uri_cache" FROM "arich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arich_rich_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "rich_file_file_name" varchar, "rich_file_content_type" varchar, "rich_file_file_size" integer, "rich_file_updated_at" datetime, "owner_type" varchar, "owner_id" integer, "uri_cache" text)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arich_rich_files" ("id","created_at","updated_at","rich_file_file_name","rich_file_content_type","rich_file_file_size","rich_file_updated_at","owner_type","owner_id","uri_cache")
+                     SELECT "id","created_at","updated_at","rich_file_file_name","rich_file_content_type","rich_file_file_size","image_updated_at","owner_type","owner_id","uri_cache" FROM "rich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "rich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "rich_rich_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "rich_file_file_name" varchar, "rich_file_content_type" varchar, "rich_file_file_size" integer, "rich_file_updated_at" datetime, "owner_type" varchar, "owner_id" integer, "uri_cache" text)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "rich_rich_files" ("id","created_at","updated_at","rich_file_file_name","rich_file_content_type","rich_file_file_size","rich_file_updated_at","owner_type","owner_id","uri_cache")
+                     SELECT "id","created_at","updated_at","rich_file_file_name","rich_file_content_type","rich_file_file_size","rich_file_updated_at","owner_type","owner_id","uri_cache" FROM "arich_rich_files"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arich_rich_files"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "rich_rich_files" ADD "simplified_type" varchar DEFAULT 'file'[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171015124126"]]
+  [1m[35m (9.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RemodeStatusFromItems (20171021035928)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aitems" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "info" text, "phone" varchar, "email" varchar, "status" integer, "tag" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aitems" ("id","name","info","phone","email","status","tag","created_at","updated_at")
+                     SELECT "id","name","info","phone","email","status","tag","created_at","updated_at" FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "info" text, "phone" varchar, "email" varchar, "status" varchar, "tag" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "items" ("id","name","info","phone","email","status","tag","created_at","updated_at")
+                     SELECT "id","name","info","phone","email","status","tag","created_at","updated_at" FROM "aitems"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aitems"[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171021035928"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserRefToItems (20171021083459)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "user_id" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_items_on_user_id" ON "items" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171021083459"]]
+  [1m[35m (10.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddAdminToUsers (20171028003654)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171028003654"]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20171028020359)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "item_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_item_id" ON "comments" ("item_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171028020359"]]
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-29 05:03:31.251618"], ["updated_at", "2017-10-29 05:03:31.251618"]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_remember_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_remember_token' AND type='index'
+[0m
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::RawUpload" => Rack::RawUpload
+
+ (called from <top (required)> at /home/young/work/rails/rails_for_dianwei/config/environment.rb:5)
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::RawUpload" => Rack::RawUpload
+
+ (called from <top (required)> at /home/young/work/rails/rails_for_dianwei/config/environment.rb:5)
+Started GET "/" for 127.0.0.1 at 2017-10-29 13:04:30 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "fd3f9a2232c4807b6e5039c88371371577110aba"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "fd3f9a2232c4807b6e5039c88371371577110aba"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (14.4ms)
+Completed 200 OK in 503ms (Views: 492.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2017-10-29 13:04:33 +0800
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.8ms)
+  Rendered users/_form.html.erb (18.6ms)
+  Rendered users/new.html.erb within layouts/application (20.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "fd3f9a2232c4807b6e5039c88371371577110aba"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "fd3f9a2232c4807b6e5039c88371371577110aba"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (2.9ms)
+Completed 200 OK in 131ms (Views: 117.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-10-29 13:04:49 +0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lSB1OW7j264cAAtPMuIAZETCNQSFpSAjZwIXrRyVF4RKIpUSiEfN5mm6OjBhaqJc6bfoEKEZ9VGQRISz1R2QtA==", "user"=>{"name"=>"admin14", "email"=>"admin11@qq.com", "school_serial"=>"20071120122", "curr_localtion"=>"深圳", "phone"=>"admin", "gender"=>"1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"创建我的账户"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER(?) LIMIT ?[0m  [["name", "admin14"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "admin11@qq.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."school_serial" = ? LIMIT ?[0m  [["school_serial", "20071120122"], ["LIMIT", 1]]
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "school_serial", "phone", "curr_localtion", "gender", "created_at", "updated_at", "password_digest", "remember_token") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "admin14"], ["email", "admin11@qq.com"], ["school_serial", "20071120122"], ["phone", "admin"], ["curr_localtion", "深圳"], ["gender", "1"], ["created_at", "2017-10-29 05:04:49.573320"], ["updated_at", "2017-10-29 05:04:49.573320"], ["password_digest", "$2a$10$8/DsTJLqYOYVSqy89K1VEeH.whWg0829kHz3rFAJToIY7Wue0AWMm"], ["remember_token", "8e6f19eac0989cd241512e52c4dd773329d11c1d"]]
+  [1m[35m (9.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "remember_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2017-10-29 05:04:49.589965"], ["remember_token", "42f78ec7988f036dbe02e6864ae1ff505f3f6918"], ["id", 1]]
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  Rendering users/crop.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.6ms)
+  Rendered users/crop.html.erb within layouts/application (369.8ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+Completed 200 OK in 555ms (Views: 431.1ms | ActiveRecord: 21.9ms)
+
+
+Started GET "/items/new" for 127.0.0.1 at 2017-10-29 13:04:58 +0800
+Processing by ItemsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "42f78ec7988f036dbe02e6864ae1ff505f3f6918"], ["LIMIT", 1]]
+  Rendering items/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered items/_form.html.erb (12.3ms)
+  Rendered items/new.html.erb within layouts/application (13.4ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 109ms (Views: 81.6ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/kindeditor/upload?dir=image" for 127.0.0.1 at 2017-10-29 13:05:08 +0800
+DEPRECATION WARNING: skip_before_filter is deprecated and will be removed in Rails 5.1. Use skip_before_action instead. (called from <class:AssetsController> at /home/young/.rvm/gems/ruby-2.3.0/gems/rails_kindeditor-0.5.0/app/controllers/kindeditor/assets_controller.rb:4)
+Processing by Kindeditor::AssetsController#create as HTML
+  Parameters: {"localUrl"=>"7051009_213317322251_2.png", "imgFile"=>#<ActionDispatch::Http::UploadedFile:0x007fe78e8038d8 @tempfile=#<Tempfile:/tmp/RackMultipart20171029-11287-129c385.png>, @original_filename="7051009_213317322251_2.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"imgFile\"; filename=\"7051009_213317322251_2.png\"\r\nContent-Type: image/png\r\n">, "dir"=>"image"}
+DEPRECATION WARNING: `render :text` is deprecated because it does not actually render a `text/plain` response. Switch to `render plain: 'plain text'` to render as `text/plain`, `render html: '<strong>HTML</strong>'` to render as `text/html`, or `render body: 'raw'` to match the deprecated behavior and render with the default Content-Type, which is `text/html`. (called from _normalize_render at /home/young/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.6/lib/abstract_controller/rendering.rb:128)
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 235ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::RawUpload" => Rack::RawUpload
+
+ (called from <top (required)> at /home/young/work/rails/rails_for_dianwei/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_remember_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_remember_token' AND type='index'
+[0m

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :items
     has_many :comments
-    
+
     mount_uploader :avatar,AvatarUploader
     attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
     after_update :crop_avatar
@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
 
     VALID_SCH_REGEX = /20[0-9]{2}1120[1-4][0-9]{2}/
-    validates :school_serial,presence: true ,length: {is: 11 },uniqueness: true,format:{with:VALID_SCH_REGEX}
+    validates :school_serial,presence: true ,length: {in: 11..12 },uniqueness: true,format:{with:VALID_SCH_REGEX}
     validates :phone,length:{maximum: 24}
 
     validates :gender,presence: true
