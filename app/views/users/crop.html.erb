@@ -1,12 +1,14 @@
 <h1>剪切头像</h1>
-<div>
-    <% if @user.avatar.url() %>
-        <%= image_tag @user.avatar.url() %>
-    <% end %>
+<div class="crop-vavatar-container">
+    <div class="crop-vavatar">
+        <%= form_for @user,url: crop_user_path(@user),html:{multipart:true,id: "crop_user_#{@user.id}"} do |f| %>
+        <% if @user.avatar.url() %>
+            <p>
+                <%= image_tag @user.avatar.url(),width:300,high:300%>
+            </p>
+        <% end %>
+        <%= f.file_field :avatar %>
+        <%= f.submit '上传',class: "btn btn-large btn-primary"%>
+        <% end %>
+    </div>
 </div>
-
-<%= form_for @user,url: crop_user_path(@user),html:{multipart:true,class: 'crop_vavatar',id: "crop_user_#{@user.id}"} do |f| %>
-<%= render 'shared/error_messages',object: @user %>
-<%= f.file_field :avatar %>
-<%= f.submit %>
-<% end %>
