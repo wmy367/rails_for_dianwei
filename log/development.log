@@ -20886,3 +20886,126 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 95ms (Views: 92.6ms | ActiveRecord: 0.5ms)
 
 
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::RawUpload" => Rack::RawUpload
+
+ (called from <top (required)> at /home/young/work/rails/rails_for_dianwei/config/environment.rb:5)
+Started GET "/" for 127.0.0.1 at 2017-10-31 22:35:19 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "16049537f40fa8d0ea70a8466c64eadf5ad12237"], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (20.9ms)
+Completed 200 OK in 801ms (Views: 790.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2017-10-31 22:35:25 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "16049537f40fa8d0ea70a8466c64eadf5ad12237"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 2], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered users/show.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 90ms (Views: 60.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/2/edit" for 127.0.0.1 at 2017-10-31 22:35:27 +0800
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "16049537f40fa8d0ea70a8466c64eadf5ad12237"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (21.0ms)
+  Rendered users/edit.html.erb within layouts/application (23.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 82ms (Views: 77.6ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/users/2" for 127.0.0.1 at 2017-10-31 22:35:43 +0800
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UKTxYv5L0kVyPbdcW4dD0PCrrLkPP9pCz1ZGjfe93QZwE+XrF+Cz9dZfFH8POFWiPNOeE6tJjhs9BkTDrFA+EQ==", "user"=>{"name"=>"admin19", "email"=>"admin19@qq.com", "school_serial"=>"201511020121", "curr_localtion"=>"深圳", "phone"=>"13631329015", "gender"=>"1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"修改信息", "id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "16049537f40fa8d0ea70a8466c64eadf5ad12237"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER(?) AND ("users"."id" != ?) LIMIT ?[0m  [["name", "admin19"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND ("users"."id" != ?) LIMIT ?[0m  [["email", "admin19@qq.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."school_serial" = ? AND ("users"."id" != ?) LIMIT ?[0m  [["school_serial", "201511020121"], ["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "school_serial" = ?, "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["school_serial", "201511020121"], ["password_digest", "$2a$10$.9MhqtV.FxeKECiE4Z3nrOm37GBWSTFAAxEBbbZgJatOJ2z9.1J2a"], ["updated_at", "2017-10-31 14:35:43.363142"], ["id", 2]]
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 107ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2017-10-31 22:35:43 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "16049537f40fa8d0ea70a8466c64eadf5ad12237"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 2], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered users/show.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_header.html.erb (2.5ms)
+Completed 200 OK in 76ms (Views: 71.3ms | ActiveRecord: 1.1ms)
+
+
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "Rack::RawUpload" => Rack::RawUpload
+
+ (called from <top (required)> at /home/young/work/rails/rails_for_dianwei/config/environment.rb:5)
+Started GET "/users/2/edit" for 127.0.0.1 at 2017-10-31 22:38:38 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "16049537f40fa8d0ea70a8466c64eadf5ad12237"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (11.2ms)
+  Rendered users/edit.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+Completed 200 OK in 462ms (Views: 432.1ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/users/2" for 127.0.0.1 at 2017-10-31 22:38:55 +0800
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kTM16UApWiz2jgDVJE7KvSdUiVdu/3BqQOiHf9og88q/Pckhj98WYJnhBRuaDkQ6RtQG9/lZszUCadqk0dwgaA==", "user"=>{"name"=>"admin19", "email"=>"admin19@qq.com", "school_serial"=>"201511029999", "curr_localtion"=>"深圳", "phone"=>"13631329015", "gender"=>"1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"修改信息", "id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "16049537f40fa8d0ea70a8466c64eadf5ad12237"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER(?) AND ("users"."id" != ?) LIMIT ?[0m  [["name", "admin19"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND ("users"."id" != ?) LIMIT ?[0m  [["email", "admin19@qq.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."school_serial" = ? AND ("users"."id" != ?) LIMIT ?[0m  [["school_serial", "201511029999"], ["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "school_serial" = ?, "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["school_serial", "201511029999"], ["password_digest", "$2a$10$c2rwzBwpEFuvuKMmYks38u9A5jd9Eivcbru0z0aDCu.J6Dl.tNglK"], ["updated_at", "2017-10-31 14:38:55.991337"], ["id", 2]]
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 108ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2017-10-31 22:38:56 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = ? LIMIT ?[0m  [["remember_token", "16049537f40fa8d0ea70a8466c64eadf5ad12237"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 2], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered users/show.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 88ms (Views: 68.9ms | ActiveRecord: 1.3ms)
+
+
