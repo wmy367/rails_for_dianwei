@@ -2,11 +2,11 @@
     <div class="item-form">
         <%= form_for(item,html:{multipart:true}) do |f| %>
             <%= render 'shared/error_messages',object: f.object %>
-            <%= f.label :name,"名字"  %>
+            <%= f.label :name,"物品名字"  %>
             <%= f.text_field :name %>
-            <%= f.label :email,"邮箱" %>
+            <%= f.label :email,"物主邮箱" %>
             <%= f.text_field :email %>
-            <%= f.label :phone,'电话号码' %>
+            <%= f.label :phone,'物主电话号码' %>
             <%= f.text_field :phone %>
             <% unless submit_label == "记录新维修物品" %>
                 <%= f.label :status,'修复状态' %>

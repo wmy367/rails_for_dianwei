@@ -13,8 +13,8 @@
 </header> -->
 
 <header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner" >
-        <div class="container">
+    <div class="wd-head-navbar-inner" >
+        <div class="wd-head-container">
             <!-- <%= link_to "电子义务维修基地", root_path, id: "logo" %> -->
             <% if curr_admin? %>
                 <%= link_to "当前是管理员登录", root_path, id: "logo" %>
@@ -22,7 +22,7 @@
                 <%= link_to "电子义务维修基地", root_path, id: "logo" %>
             <% end %>
             <nav>
-                <ul class="nav pull-right">
+                <ul class="nav pull-right wd-head-right">
                     <li><%= link_to "主页",root_path%></li>
                     <li><%= link_to "所有成员",users_path %></li>
                     <li><%= link_to "所有维修物品",items_path %></li>
