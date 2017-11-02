@@ -35,9 +35,15 @@
 
 <% @item.comments.each do |comment| %>
     <%= render 'comments/comment_avatar',user: curr_comment_user(comment) %>
-    <div class="comment-show">
-        <%= comment.content %>
-    </div>
+    <% if @item.user == curr_comment_user(comment) %>
+        <div class="master-comment-show">
+            <%= comment.content %>
+        </div>
+    <% else %>
+        <div class="comment-show">
+            <%= comment.content %>
+        </div>
+    <% end %>
 <% end %>
 
 <% if signed_in? %>

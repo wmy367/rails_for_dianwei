@@ -3,12 +3,14 @@ class CommentsController < ApplicationController
       @comment = Comment.new(comment_params)
     #   @comment.content = comment_params[:content]
     #   @comment.user_id = comment_params[:user]
+      item = Item.find(@comment.item_id)
       if @comment.save
           flash[:notice] = "评论成功"
+          item.update(status: params[:comment][:status])
       else
           flash[:notice] = "评论失败"
       end
-      redirect_to  Item.find(@comment.item_id)
+      redirect_to item
   end
 
   def destroy

@@ -31,4 +31,24 @@ module ItemsHelper
         end
     end
 
+    def commet_status_list(item)
+        a = ['维修中','维修中']
+        b = ['已修好','已修好']
+        c = ['无法修复','无法修复']
+        abc = [a,b,c]
+
+        case(item.status)
+        when '新报修'
+            [a,b,c]
+        when '无法修复'
+            [c,a,b]
+        when '维修中'
+            [a,b,c]
+        when '已修好'
+            [b,a,c]
+        else
+            [a,b,c]
+        end
+    end
+
 end
