@@ -47,6 +47,7 @@ GEM
       sass (~> 3.2)
     bootstrap-will_paginate (1.0.0)
       will_paginate
+    browser (2.5.2)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.14.4)
@@ -236,6 +237,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 2.3.2)
   bootstrap-will_paginate
+  browser
   byebug
   capybara
   carrierwave
