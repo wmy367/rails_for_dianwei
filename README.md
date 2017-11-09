@@ -20,3 +20,7 @@ rvm install 2.3.0
 ```
 gem install rails -v 5.0.6
 ```
+**安装 bundler**
+```
+gem install bundler
+```
