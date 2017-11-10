@@ -35,13 +35,14 @@ class UsersController < ApplicationController
   end
 
   def crop_update
-    if params[:user].nil? || params[:user][:avatar].nil?
+    if params[:user].nil? || user_avatar_param.nil?
         @user = User.find(params[:id])
         render :crop
         return
     end
     @user = User.find(params[:id])
     if @user.update_attribute(:avatar,params[:user][:avatar])
+    # if @user.update_attribute(:avatar,user_avatar_param)
         redirect_to @user, notice: '头像变更完成'
     else
         @user = User.find(params[:id])
@@ -114,6 +115,10 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email,:school_serial,:phone,:avatar,:gender,:curr_localtion,:password,:password_confirmation)
+    end
+
+    def user_avatar_param
+        params.require(:user).permit(:avatar)
     end
 
     def correct_user
