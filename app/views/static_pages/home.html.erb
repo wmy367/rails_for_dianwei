@@ -1,4 +1,8 @@
 <div class="center hero-unit">
     <h1>大家好</h1>
-    <h2>[]测试用] 湖南大学 电子维修基地主页</h2>
+    <% unless Rails.env.production? %>
+        <h2>[测试用 <font color="#f00">不存档</font>] 湖南大学 电子维修基地主页</h2>
+    <% else %>
+        <h2>[<font color="#F00">存档</font>测试] 湖南大学 电子维修基地主页</h2>
+    <% end %>
 </div>

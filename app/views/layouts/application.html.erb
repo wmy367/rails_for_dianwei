@@ -18,7 +18,7 @@
       <div class="container">
 
           <%= yield %>
-          <%= debug(params) %>
+          <%= debug(params) unless Rails.env.production?%>
       </div>
   </body>
 </html>
