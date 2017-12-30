@@ -28,3 +28,7 @@ sudo apt-get install libmagickwand-dev
 ```
 gem install bundler
 ```
+**运行APP**
+```
+rails s --port=80 --binding=172.18.141.109 -d -e production --pid=3143
+```
