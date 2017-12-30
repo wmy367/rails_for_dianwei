@@ -23,6 +23,7 @@ gem install rails -v 5.0.6
 **安装 MagickCore**
 ```
 sudo apt-get install libmagickwand-dev
+sudo apt-get install imagemagick
 ```
 **安装 bundler**
 ```
